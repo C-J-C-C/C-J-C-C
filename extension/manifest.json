@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Local Caption Translator",
+  "version": "1.0",
+  "description": "Captures microphone audio, translates it, and overlays subtitles on web pages.",
+  "permissions": ["scripting", "tabs"],
+  "host_permissions": ["http://localhost:3000/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-listening": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L"
+      },
+      "description": "Start/stop live captioning"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
